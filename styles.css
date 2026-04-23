@@ -359,35 +359,37 @@ main {
 
 .team-head-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .team-pet {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 10px;
   background: var(--bg-2);
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 4px 10px 4px 4px;
+  border-radius: var(--radius);
+  padding: 6px 14px 6px 6px;
   cursor: pointer;
   color: var(--text);
   transition: all 0.15s;
-  max-width: 160px;
+  max-width: 220px;
 }
 .team-pet:hover { border-color: var(--accent); background: var(--accent-soft); }
 .team-pet.empty {
   color: var(--muted);
-  padding: 6px 12px;
-  font-size: 11px;
+  padding: 10px 16px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
+  border-style: dashed;
 }
 .team-pet-img {
-  width: 28px; height: 28px;
+  width: 56px; height: 56px;
   object-fit: contain;
-  background: #0a0d16;
-  border-radius: 6px;
-  padding: 2px;
+  background: linear-gradient(180deg, #0a0d16, #060810);
+  border-radius: 8px;
+  padding: 3px;
   flex-shrink: 0;
+  border: 1px solid var(--border);
 }
 .team-pet-name {
-  font-size: 12px; font-weight: 500;
+  font-size: 13px; font-weight: 600;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 body.is-viewer .team-pet { pointer-events: none; opacity: 0.8; }
