@@ -18,6 +18,7 @@ function el(tag, attrs = {}, ...kids) {
 }
 
 function renderAll() {
+  if (!state) return;
   renderHeader();
   renderTeams();
   renderSavedList();
