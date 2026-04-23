@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SKRE Guild War Planner</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>⚔️ SKRE Guild War Planner</h1>
+  <span class="grow"></span>
+  <div id="auth-status" class="auth-status"></div>
+  <button id="btn-new" class="editor-only" title="New matchup">+ New</button>
+  <button id="btn-clear" class="editor-only" title="Clear teams &amp; note">Clear</button>
+</header>
+
+<main>
+  <section class="workarea">
+    <div class="meta-row">
+      <div class="f">
+        <label for="m-name">Matchup name</label>
+        <input id="m-name" type="text" placeholder="e.g. vs GuildX — Round 1">
+      </div>
+      <div>
+        <label for="m-result">Result</label>
+        <select id="m-result">
+          <option value="untested">Untested</option>
+          <option value="win">Win</option>
+          <option value="loss">Loss</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="teams">
+      <div class="team our">
+        <div class="team-head">
+          <h2>🟢 Our Team</h2>
+          <span class="team-spd">Total SPD: <strong id="our-total-spd">0</strong></span>
+        </div>
+        <div class="slots" id="team-our"></div>
+      </div>
+      <div class="team enemy">
+        <div class="team-head">
+          <h2>🔴 Enemy Team</h2>
+          <label class="team-spd">
+            Total SPD:
+            <input id="enemy-total-spd" type="number" step="1" value="0">
+          </label>
+        </div>
+        <div class="slots" id="team-enemy"></div>
+      </div>
+    </div>
+
+    <div class="note-section">
+      <label for="m-note">Notes / tactics</label>
+      <textarea id="m-note" rows="4" placeholder="Turn order, counters, key skills..."></textarea>
+    </div>
+  </section>
+
+  <aside class="sidebar">
+    <h2>Saved matchups</h2>
+    <div id="saved-list"></div>
+  </aside>
+</main>
+
+<!-- Character picker modal -->
+<div class="picker" id="picker">
+  <div class="picker-backdrop" id="picker-backdrop"></div>
+  <div class="picker-panel">
+    <div class="picker-head">
+      <h2>Pick a character</h2>
+      <span class="grow"></span>
+      <input id="picker-q" type="text" placeholder="Search name...">
+      <span id="picker-count" class="muted"></span>
+      <button id="picker-close" class="picker-close">Close</button>
+    </div>
+    <div class="filter-row">
+      <div id="filter-grades"></div>
+      <div id="filter-types"></div>
+    </div>
+    <div class="picker-grid" id="picker-grid"></div>
+  </div>
+</div>
+
+<!-- Set picker modal -->
+<div class="picker" id="set-modal">
+  <div class="picker-backdrop" id="set-modal-backdrop"></div>
+  <div class="picker-panel">
+    <div class="picker-head">
+      <h2 id="set-modal-title">Pick set(s)</h2>
+      <span class="grow"></span>
+      <span class="muted">Click to toggle — multiple allowed</span>
+      <button id="set-modal-close" class="picker-close">Done</button>
+    </div>
+    <div class="set-grid" id="set-grid"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="state.js"></script>
+<script src="store.js"></script>
+<script src="auth.js"></script>
+<script src="render.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

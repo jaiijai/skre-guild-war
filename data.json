@@ -1,0 +1,1686 @@
+{
+ "characters": [
+  {
+   "name": "Fai",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Kyle",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Branze & Bransel",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Kagura",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "HR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Lubu",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Ryan",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Klahan",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Colt",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Teo",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CDM",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Dellons",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Taka",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Shane",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Ballista",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Bi Dam",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Amelia",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Bai Long",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Randgrid",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Cha Hae-in",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Deo",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Heavenia",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Feng Yan",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Soi",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Snipper",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Jupy",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Jane",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "RARE"
+  },
+  {
+   "name": "May",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "RARE"
+  },
+  {
+   "name": "Black Rose",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Catty",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Jin",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Ray",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Zhao Yun",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Leo",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Hokin",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Xiao",
+   "element": "ATTACK",
+   "type": "ATTACK",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Juri",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Melia",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 1580.0,
+   "hp": 7255.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Song Jiwoo",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Frayja",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Kyrielle",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Rin",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Yeonhee",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Mercure",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Silvesta",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Vanessa",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "ReginLeif",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Nezha",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Velika",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Ruri",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Espada",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Yu Shin",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Pascal",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CDM",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Daisy",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Miho",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Xiao Qiao",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1500.0,
+   "def": 571.0,
+   "hp": 3326.0,
+   "spd": 29.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Ariel",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Sylvia",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Sera",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Noho",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "RED",
+   "grade": "RARE"
+  },
+  {
+   "name": "Ling Ling",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Yuri",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Bane",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Joker",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Cleo",
+   "element": "MAGIC",
+   "type": "MAGIC",
+   "atk": 1389.0,
+   "def": 533.0,
+   "hp": 3174.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "RARE"
+  },
+  {
+   "name": "Gellidus",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Mist",
+   "element": "UNIVERSAL",
+   "type": "MAGIC",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Nia",
+   "element": "UNIVERSAL",
+   "type": "MAGIC",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Chancellor",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Sieg",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Bai Jiao",
+   "element": "UNIVERSAL",
+   "type": "MAGIC",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Guan Yu",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Elysia",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Pallanus",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Sun Wukong",
+   "element": "UNIVERSAL",
+   "type": "MAGIC",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Trude",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Karma",
+   "element": "UNIVERSAL",
+   "type": "MAGIC",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Eileene",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Rachel",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Spike",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Jave",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Kris",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "EFF",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Ace",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1306.0,
+   "def": 659.0,
+   "hp": 3693.0,
+   "spd": 25.0,
+   "starType": "ATK",
+   "star4Type": "CR",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Victoria",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1238.0,
+   "def": 616.0,
+   "hp": 3529.0,
+   "spd": 21.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "RARE"
+  },
+  {
+   "name": "Asura",
+   "element": "UNIVERSAL",
+   "type": "ATTACK",
+   "atk": 1238.0,
+   "def": 616.0,
+   "hp": 3529.0,
+   "spd": 21.0,
+   "starType": "ATK",
+   "star4Type": "RED",
+   "grade": "RARE"
+  },
+  {
+   "name": "Lania",
+   "element": "UNIVERSAL",
+   "type": "MAGIC",
+   "atk": 1238.0,
+   "def": 616.0,
+   "hp": 3529.0,
+   "spd": 21.0,
+   "starType": "ATK",
+   "star4Type": "WK",
+   "grade": "RARE"
+  },
+  {
+   "name": "Rudy",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 727.0,
+   "def": 892.0,
+   "hp": 4825.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Aquila",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 727.0,
+   "def": 892.0,
+   "hp": 4825.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Radgrid",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 727.0,
+   "def": 892.0,
+   "hp": 4825.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Aragon",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 727.0,
+   "def": 892.0,
+   "hp": 4825.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Rook",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 727.0,
+   "def": 892.0,
+   "hp": 4825.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Knox",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 727.0,
+   "def": 892.0,
+   "hp": 4825.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Hellenia",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 727.0,
+   "def": 892.0,
+   "hp": 4825.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "RARE"
+  },
+  {
+   "name": "Evan",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 704.0,
+   "def": 818.0,
+   "hp": 4572.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "RARE"
+  },
+  {
+   "name": "Li",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 704.0,
+   "def": 818.0,
+   "hp": 4572.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "RARE"
+  },
+  {
+   "name": "Yoo Jinho",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 704.0,
+   "def": 818.0,
+   "hp": 4572.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "RARE"
+  },
+  {
+   "name": "Rahkun",
+   "element": "DEFENSE",
+   "type": "ATTACK",
+   "atk": 704.0,
+   "def": 818.0,
+   "hp": 4572.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "BLK",
+   "grade": "RARE"
+  },
+  {
+   "name": "Rosie",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1095.0,
+   "def": 675.0,
+   "hp": 4458.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Platin",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1095.0,
+   "def": 675.0,
+   "hp": 4458.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Biscuit",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1095.0,
+   "def": 675.0,
+   "hp": 4458.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Alice",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1095.0,
+   "def": 675.0,
+   "hp": 4458.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Lina",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1095.0,
+   "def": 675.0,
+   "hp": 4458.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Orly",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1095.0,
+   "def": 675.0,
+   "hp": 4458.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Diaochan",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1095.0,
+   "def": 675.0,
+   "hp": 4458.0,
+   "spd": 19.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "LEGEND"
+  },
+  {
+   "name": "Karin",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1035.0,
+   "def": 632.0,
+   "hp": 4248.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "RARE"
+  },
+  {
+   "name": "Karon",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1035.0,
+   "def": 632.0,
+   "hp": 4248.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "RARE"
+  },
+  {
+   "name": "Lucy",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1035.0,
+   "def": 632.0,
+   "hp": 4248.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "RARE"
+  },
+  {
+   "name": "Yui",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1035.0,
+   "def": 632.0,
+   "hp": 4248.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "RARE"
+  },
+  {
+   "name": "Chloe",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1035.0,
+   "def": 632.0,
+   "hp": 4248.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "RARE"
+  },
+  {
+   "name": "Lee Joohee",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1035.0,
+   "def": 632.0,
+   "hp": 4248.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "RARE"
+  },
+  {
+   "name": "Sarah",
+   "element": "SUPPORT",
+   "type": "MAGIC",
+   "atk": 1035.0,
+   "def": 632.0,
+   "hp": 4248.0,
+   "spd": 16.0,
+   "starType": "DEF",
+   "star4Type": "RED",
+   "grade": "RARE"
+  }
+ ],
+ "runeSets": [
+  "Vanguard",
+  "Bounty Tracker",
+  "Paladin",
+  "Assassin",
+  "Gatekeeper",
+  "Guardian",
+  "Avenger",
+  "Spellweaver",
+  "Orchestrator"
+ ],
+ "ringGrades": {
+  "Ring 4★": 5,
+  "Ring 5★": 7,
+  "Ring 6★": 10
+ },
+ "potentialLevels": {
+  "Lv.0": 0,
+  "Lv.10": 1,
+  "Lv.20": 2,
+  "Lv.30": 3
+ },
+ "potentialATK": [
+  0,
+  100,
+  220,
+  370
+ ],
+ "potentialDEF": [
+  0,
+  70,
+  150,
+  250
+ ],
+ "potentialHP": [
+  0,
+  320,
+  680,
+  1130
+ ],
+ "mainStatsATK": [
+  "Attack %",
+  "Attack Flat",
+  "Defense %",
+  "Defense Flat",
+  "HP %",
+  "HP Flat",
+  "Crit Rate",
+  "Crit Damage",
+  "Weakness Hit Chance",
+  "Effect Hit Rate"
+ ],
+ "mainStatsDEF": [
+  "Attack %",
+  "Attack Flat",
+  "Defense %",
+  "Defense Flat",
+  "HP %",
+  "HP Flat",
+  "Block",
+  "Damage Taken Reduction",
+  "Effect Resistance"
+ ],
+ "subStatsATK": [
+  "Attack %",
+  "Attack Flat",
+  "Defense %",
+  "Defense Flat",
+  "HP %",
+  "HP Flat",
+  "Speed",
+  "Crit Rate",
+  "Crit Damage",
+  "Weakness Hit Chance",
+  "Block Rate",
+  "Effect Hit Rate",
+  "Effect Resistance"
+ ],
+ "subStatsDEF": [
+  "Attack %",
+  "Attack Flat",
+  "Defense %",
+  "Defense Flat",
+  "HP %",
+  "HP Flat",
+  "Speed",
+  "Crit Rate",
+  "Crit Damage",
+  "Weakness Hit Chance",
+  "Block Rate",
+  "Effect Hit Rate",
+  "Effect Resistance"
+ ],
+ "mainValueMap": {
+  "Attack %": 28,
+  "Attack Flat": 240,
+  "Defense %": 28,
+  "Defense Flat": 160,
+  "HP %": 28,
+  "HP Flat": 850,
+  "Crit Rate": 24,
+  "Crit Damage": 36,
+  "Weakness Hit Chance": 28,
+  "Block": 24,
+  "Block Rate": 24,
+  "Damage Taken Reduction": 16,
+  "Effect Hit Rate": 30,
+  "Effect Resistance": 30
+ },
+ "subValueMap": {
+  "Attack %": 5,
+  "Attack Flat": 50,
+  "Defense %": 5,
+  "Defense Flat": 30,
+  "HP %": 5,
+  "HP Flat": 180,
+  "Speed": 4,
+  "Crit Rate": 4,
+  "Crit Damage": 6,
+  "Weakness Hit Chance": 5,
+  "Block Rate": 4,
+  "Effect Hit Rate": 5,
+  "Effect Resistance": 5
+ },
+ "percentStats": [
+  "Attack %",
+  "Defense %",
+  "HP %",
+  "Crit Rate",
+  "Crit Damage",
+  "Weakness Hit Chance",
+  "Block",
+  "Block Rate",
+  "Effect Hit Rate",
+  "Effect Resistance",
+  "Damage Taken Reduction"
+ ],
+ "transcendLegendPrimary": [
+  0,
+  12,
+  18,
+  18,
+  18,
+  30,
+  36,
+  38,
+  40,
+  42,
+  44,
+  46,
+  48
+ ],
+ "transcendLegendSecondary": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  2,
+  4,
+  6,
+  8,
+  10,
+  12
+ ],
+ "transcendLegendHP": [
+  0,
+  0,
+  0,
+  18,
+  18,
+  18,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30
+ ],
+ "transcendRarePrimary": [
+  0,
+  9,
+  13.5,
+  13.5,
+  13.5,
+  22.5,
+  27,
+  29,
+  31,
+  33,
+  35,
+  37,
+  39
+ ],
+ "transcendRareSecondary": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  2,
+  4,
+  6,
+  8,
+  10,
+  12
+ ],
+ "transcendRareHP": [
+  0,
+  0,
+  0,
+  14,
+  14,
+  14,
+  14,
+  16,
+  18,
+  20,
+  22,
+  24,
+  36
+ ],
+ "star4Bonus": {
+  "CR": {
+   "stat": "critRate",
+   "value": 18
+  },
+  "CDM": {
+   "stat": "critDamage",
+   "value": 24
+  },
+  "WK": {
+   "stat": "weaknessHit",
+   "value": 20
+  },
+  "BLK": {
+   "stat": "block",
+   "value": 18
+  },
+  "RED": {
+   "stat": "damageTakenReduction",
+   "value": 10
+  },
+  "EFF": {
+   "stat": "effectHitRate",
+   "value": 24
+  }
+ },
+ "setBonus2pc": {
+  "Vanguard": {
+   "stat": "atkPct",
+   "value": 20
+  },
+  "Guardian": {
+   "stat": "defPct",
+   "value": 20
+  },
+  "Paladin": {
+   "stat": "hpPct",
+   "value": 17
+  },
+  "Assassin": {
+   "stat": "critRate",
+   "value": 15
+  },
+  "Gatekeeper": {
+   "stat": "block",
+   "value": 15
+  },
+  "Bounty Tracker": {
+   "stat": "weaknessHit",
+   "value": 15
+  },
+  "Spellweaver": {
+   "stat": "effectHitRate",
+   "value": 17
+  },
+  "Orchestrator": {
+   "stat": "effectResistance",
+   "value": 17
+  },
+  "Avenger": {
+   "text": "Damage Dealt 15%"
+  }
+ },
+ "setBonus4pc": {
+  "Vanguard": [
+   {
+    "stat": "atkPct",
+    "value": 45
+   },
+   {
+    "stat": "effectHitRate",
+    "value": 20
+   }
+  ],
+  "Guardian": [
+   {
+    "stat": "defPct",
+    "value": 45
+   },
+   {
+    "stat": "effectResistance",
+    "value": 20
+   }
+  ],
+  "Paladin": [
+   {
+    "stat": "hpPct",
+    "value": 40
+   },
+   {
+    "text": "Income Healing Boots 20%"
+   }
+  ],
+  "Assassin": [
+   {
+    "stat": "critRate",
+    "value": 30
+   },
+   {
+    "text": "Ignore Defense 15%"
+   }
+  ],
+  "Gatekeeper": [
+   {
+    "stat": "block",
+    "value": 30
+   },
+   {
+    "text": "Block Damage Reduction 10%"
+   }
+  ],
+  "Bounty Tracker": [
+   {
+    "stat": "weaknessHit",
+    "value": 35
+   },
+   {
+    "text": "Weakness Hit Damage 35%"
+   }
+  ],
+  "Spellweaver": [
+   {
+    "stat": "effectHitRate",
+    "value": 35
+   },
+   {
+    "text": "Effect Probability 10%"
+   }
+  ],
+  "Orchestrator": [
+   {
+    "stat": "effectResistance",
+    "value": 35
+   },
+   {
+    "text": "Star Battles with 1 turn of Crowd Control Immunity"
+   }
+  ],
+  "Avenger": [
+   {
+    "text": "Damage Dealt 30%"
+   },
+   {
+    "text": "Boss Damage 40%"
+   }
+  ]
+ }
+}
