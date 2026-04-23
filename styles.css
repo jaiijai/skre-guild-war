@@ -359,32 +359,33 @@ main {
 
 .team-head-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .team-pet {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 6px 14px 6px 6px;
+  padding: 6px;
   cursor: pointer;
   color: var(--text);
   transition: all 0.15s;
-  max-width: 220px;
+  width: 132px;
 }
 .team-pet:hover { border-color: var(--accent); background: var(--accent-soft); }
 .team-pet.empty {
   color: var(--muted);
-  padding: 10px 16px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.6px;
   text-transform: uppercase;
   border-style: dashed;
+  aspect-ratio: 1 / 1.1;
+  justify-content: center;
 }
 .team-pet-img {
-  width: 56px; height: 56px;
+  width: 120px; height: 120px;
   object-fit: contain;
   background: linear-gradient(180deg, #0a0d16, #060810);
-  border-radius: 8px;
-  padding: 3px;
+  border-radius: var(--radius);
+  padding: 4px;
   flex-shrink: 0;
   border: 1px solid var(--border);
 }
