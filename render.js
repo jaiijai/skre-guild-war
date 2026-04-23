@@ -42,52 +42,80 @@ function renderSkillOrder() {
   const root = $("#skill-order");
   if (!root) return;
   root.innerHTML = "";
-  const teamNames = state.ourTeam.filter(Boolean).map(s => s.name);
   const order = state.skillOrder || [null, null, null];
+  const team = state.ourTeam;
+
+  // Queue slots
+  const queue = el("div", { class: "sq-queue" });
   for (let i = 0; i < 3; i++) {
     const step = order[i];
-    const stepNum = el("div", { class: "skill-step-num" }, (i + 1));
-
-    const charSel = el("select", {
-      class: "skill-char-sel",
-      onchange: (e) => {
-        if (!isEditor) return;
-        const v = e.target.value;
-        state.skillOrder[i] = v
-          ? { charName: v, skill: state.skillOrder[i]?.skill || "top" }
-          : null;
+    const slot = el("div", {
+      class: "sq-slot" + (step ? " filled" : " empty"),
+      onclick: () => {
+        if (!isEditor || !step) return;
+        state.skillOrder[i] = null;
         saveCurrent();
         renderSkillOrder();
-      }
+      },
+      title: step ? "Click to clear" : ""
     },
-      el("option", { value: "" }, "— char —"),
-      ...teamNames.map(n => el("option", { value: n, selected: step?.charName === n }, n))
+      el("div", { class: "sq-num" }, i + 1),
+      step
+        ? el("div", { class: "sq-body" },
+            el("img", {
+              class: "sq-portrait",
+              src: portraitSrc(step.charName), alt: step.charName,
+              onerror: (e) => { e.target.style.display = "none"; }
+            }),
+            el("div", { class: "sq-meta" },
+              el("div", { class: "sq-name" }, step.charName),
+              el("div", { class: "sq-skill sk-" + step.skill },
+                step.skill === "top" ? "Skill 1" : "Skill 2")
+            )
+          )
+        : el("div", { class: "sq-placeholder" }, "Tap a skill below →")
     );
-
-    const skillSel = el("select", {
-      class: "skill-kind-sel",
-      disabled: !step,
-      onchange: (e) => {
-        if (!isEditor) return;
-        if (!state.skillOrder[i]) return;
-        state.skillOrder[i].skill = e.target.value;
-        saveCurrent();
-      }
-    },
-      el("option", { value: "top", selected: step?.skill === "top" }, "Top"),
-      el("option", { value: "bottom", selected: step?.skill === "bottom" }, "Bottom")
-    );
-
-    const portrait = step?.charName
-      ? el("img", {
-          class: "skill-portrait",
-          src: portraitSrc(step.charName), alt: step.charName,
-          onerror: (e) => { e.target.style.display = "none"; }
-        })
-      : el("div", { class: "skill-portrait empty" }, "?");
-
-    root.append(el("div", { class: "skill-step" }, stepNum, portrait, charSel, skillSel));
+    queue.append(slot);
   }
+  root.append(queue);
+
+  // Palette
+  const filled = team.filter(Boolean);
+  if (!filled.length) {
+    root.append(el("div", { class: "sq-hint" }, "Add characters to Our Team to build skill order."));
+    return;
+  }
+  const palette = el("div", { class: "sq-palette" });
+  for (const s of filled) {
+    const card = el("div", { class: "sq-pchar" },
+      el("img", {
+        class: "sq-pchar-img",
+        src: portraitSrc(s.name), alt: s.name,
+        onerror: (e) => { e.target.style.display = "none"; }
+      }),
+      el("div", { class: "sq-pchar-name" }, s.name),
+      el("div", { class: "sq-pchar-btns" },
+        skillBtn(s.name, "top", "Skill 1"),
+        skillBtn(s.name, "bottom", "Skill 2")
+      )
+    );
+    palette.append(card);
+  }
+  root.append(palette);
+}
+
+function skillBtn(charName, skill, label) {
+  return el("button", {
+    class: "sq-skbtn sk-" + skill,
+    onclick: () => {
+      if (!isEditor) return;
+      const free = state.skillOrder.findIndex(x => !x);
+      if (free < 0) return; // queue full
+      state.skillOrder[free] = { charName, skill };
+      saveCurrent();
+      renderSkillOrder();
+    }
+  }, label);
 }
 
 function portraitImg(name) {
