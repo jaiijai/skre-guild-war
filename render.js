@@ -377,10 +377,11 @@ function renderSavedList() {
     const isCurrent = m.id === state.id;
     const ourCount = (m.ourTeam || []).filter(Boolean).length;
     const enemyCount = (m.enemyTeam || []).filter(Boolean).length;
+    const dotClass = m.result === "win" ? " win-dot" : m.result === "loss" ? " loss-dot" : "";
     const row = el("div", { class: "saved-row" + (isCurrent ? " current" : "") },
       el("div", { class: "saved-main", onclick: () => loadMatchupById(m.id) },
         el("div", { class: "saved-name" }, m.name || "(untitled)"),
-        el("div", { class: "saved-sub" },
+        el("div", { class: "saved-sub" + dotClass },
           `${RESULT_LABEL[m.result] || m.result} · ${ourCount}v${enemyCount}`)
       ),
       el("div", { class: "saved-actions" },
