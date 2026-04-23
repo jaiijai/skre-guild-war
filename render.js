@@ -706,7 +706,7 @@ function renderPickerGrid() {
 
   const matches = (c) => {
     if (filterState.grades.size && !filterState.grades.has(c.grade)) return false;
-    if (filterState.types.size && !filterState.types.has(c.type)) return false;
+    if (filterState.types.size && !filterState.types.has(c.element)) return false;
     if (q && !c.name.toLowerCase().includes(q)) return false;
     return true;
   };
@@ -744,7 +744,7 @@ function pickerCard(c, used) {
                 onerror: (e) => { e.target.style.display = "none"; } }),
     el("div", { class: "pcard-name" }, c.name),
     el("div", { class: "pcard-meta" },
-      `${TYPE_ICON[c.type] || ""}${GRADE_ICON[c.grade] || ""}`)
+      `${TYPE_ICON[c.element] || ""}${GRADE_ICON[c.grade] || ""}`)
   );
 }
 
@@ -795,7 +795,7 @@ function renderFilters() {
   }
   const tRoot = $("#filter-types");
   tRoot.innerHTML = "";
-  const availableTypes = [...new Set(DATA.characters.map(c => c.type))];
+  const availableTypes = [...new Set(DATA.characters.map(c => c.element))];
   const order = ["ATTACK", "MAGIC", "DEFENSE", "SUPPORT", "UNIVERSAL"];
   for (const t of order.filter(x => availableTypes.includes(x))) {
     tRoot.append(filterChip(t, TYPE_LABEL[t], filterState.types));
