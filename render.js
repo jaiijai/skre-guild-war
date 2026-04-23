@@ -788,7 +788,9 @@ function renderFilters() {
   }
   const tRoot = $("#filter-types");
   tRoot.innerHTML = "";
-  for (const t of ["ATTACK", "MAGIC", "DEFENSE", "SUPPORT", "UNIVERSAL"]) {
+  const availableTypes = [...new Set(DATA.characters.map(c => c.type))];
+  const order = ["ATTACK", "MAGIC", "DEFENSE", "SUPPORT", "UNIVERSAL"];
+  for (const t of order.filter(x => availableTypes.includes(x))) {
     tRoot.append(filterChip(t, TYPE_LABEL[t], filterState.types));
   }
 }
