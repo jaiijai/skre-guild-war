@@ -457,7 +457,7 @@ function renderPetModalGrid() {
   const { side } = _petModalCtx;
   const curList = (side === "our" ? state.ourPets : state.enemyPets) || [];
   $("#pet-modal-title").textContent =
-    `${side === "our" ? "Our" : "Enemy"} team — Pick pet(s) (${curList.length}/${PET_MAX})`;
+    `${side === "our" ? "Our" : "Enemy"} team — Pick pet(s)`;
   const grid = $("#pet-grid");
   grid.replaceChildren();
   const pets = DATA.pets || [];
