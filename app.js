@@ -41,8 +41,8 @@ async function boot() {
   $("#btn-clear").addEventListener("click", () => {
     if (!isEditor) return;
     if (!confirm("Clear both teams and note?")) return;
-    state.ourTeam = Array(TEAM_SIZE).fill(null);
-    state.enemyTeam = Array(TEAM_SIZE).fill(null);
+    state.ourTeam = Array(ourSize()).fill(null);
+    state.enemyTeam = Array(enemySize()).fill(null);
     state.note = "";
     saveCurrent();
     renderAll();

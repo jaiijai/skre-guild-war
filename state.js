@@ -17,7 +17,24 @@ function pushRecent(name) {
   localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, RECENT_MAX)));
 }
 const THEME_KEY = "skre-gw:theme";
-const TEAM_SIZE = 3;
+
+const FORMATIONS = {
+  plan1: { size: 5, label: "หน้า 3 หลัง 2", shape: [[1,0],[1,0],[1,1],[0,1],[1,0]] },
+  plan2: { size: 5, label: "หน้า 2 หลัง 3", shape: [[0,1],[1,1],[0,1],[1,1],[0,1]] },
+  plan3: { size: 5, label: "หน้า 4 หลัง 1", shape: [[1,0],[1,0],[1,1],[1,0],[1,0]] },
+  plan4: { size: 5, label: "หน้า 1 หลัง 4", shape: [[0,1],[0,1],[1,1],[0,1],[0,1]] }
+};
+const DEFAULT_FORMATION = "plan1";
+function formationSize(f) {
+  return FORMATIONS[f]?.size || FORMATIONS[DEFAULT_FORMATION].size;
+}
+function ourSize() {
+  return formationSize(state?.ourFormation || DEFAULT_FORMATION);
+}
+function enemySize() {
+  return formationSize(state?.enemyFormation || DEFAULT_FORMATION);
+}
+
 const STAT_KEYS = ["atk", "def", "hp", "spd", "crit", "block", "dmgRed", "weak", "ehr", "res"];
 
 const TYPE_LABEL = {
@@ -83,20 +100,31 @@ function setIconSrc(setName) {
 }
 
 function newMatchup() {
+  const size = formationSize(DEFAULT_FORMATION);
   return {
     id: crypto.randomUUID(),
     name: "New Matchup",
-    ourTeam: Array(TEAM_SIZE).fill(null),
-    enemyTeam: Array(TEAM_SIZE).fill(null),
+    ourFormation: DEFAULT_FORMATION,
+    enemyFormation: DEFAULT_FORMATION,
+    ourTeam: Array(size).fill(null),
+    enemyTeam: Array(size).fill(null),
     enemyTotalSpd: 0,
-    ourPet: null,
-    enemyPet: null,
+    ourPets: [],
+    enemyPets: [],
     skillOrder: [null, null, null],
     note: "",
     result: "untested",
     createdAt: Date.now(),
     updatedAt: Date.now()
   };
+}
+
+function normalizePets(m, key) {
+  const arr = m[key + "s"];
+  if (Array.isArray(arr)) return arr.filter(x => typeof x === "string" && x);
+  const legacy = m[key];
+  if (typeof legacy === "string" && legacy) return [legacy];
+  return [];
 }
 
 function normalizeSets(s) {
@@ -128,24 +156,23 @@ function migrateSlot(s, side) {
 
 function sanitizeMatchup(m) {
   if (!m) return newMatchup();
-  const our = Array.isArray(m.ourTeam) ? m.ourTeam.slice(0, TEAM_SIZE) : [];
-  const enemy = Array.isArray(m.enemyTeam) ? m.enemyTeam.slice(0, TEAM_SIZE) : [];
-  while (our.length < TEAM_SIZE) our.push(null);
-  while (enemy.length < TEAM_SIZE) enemy.push(null);
+  const legacy = FORMATIONS[m.formation] ? m.formation : null;
+  if (!FORMATIONS[m.ourFormation]) m.ourFormation = legacy || DEFAULT_FORMATION;
+  if (!FORMATIONS[m.enemyFormation]) m.enemyFormation = legacy || DEFAULT_FORMATION;
+  delete m.formation;
+  const oSize = formationSize(m.ourFormation);
+  const eSize = formationSize(m.enemyFormation);
+  const our = Array.isArray(m.ourTeam) ? m.ourTeam.slice(0, oSize) : [];
+  const enemy = Array.isArray(m.enemyTeam) ? m.enemyTeam.slice(0, eSize) : [];
+  while (our.length < oSize) our.push(null);
+  while (enemy.length < eSize) enemy.push(null);
   m.ourTeam = our.map(s => migrateSlot(s, "our"));
   m.enemyTeam = enemy.map(s => migrateSlot(s, "enemy"));
   m.enemyTotalSpd = Number.isFinite(+m.enemyTotalSpd) ? +m.enemyTotalSpd : 0;
-  // Migrate per-slot pet (old schema) → team pet if team pet empty
-  if (!m.ourPet) {
-    const first = (m.ourTeam || []).find(s => s && typeof s.pet === "string" && s.pet);
-    m.ourPet = first?.pet || null;
-  }
-  if (!m.enemyPet) {
-    const first = (m.enemyTeam || []).find(s => s && typeof s.pet === "string" && s.pet);
-    m.enemyPet = first?.pet || null;
-  }
-  m.ourPet = typeof m.ourPet === "string" && m.ourPet ? m.ourPet : null;
-  m.enemyPet = typeof m.enemyPet === "string" && m.enemyPet ? m.enemyPet : null;
+  m.ourPets = normalizePets(m, "ourPet");
+  m.enemyPets = normalizePets(m, "enemyPet");
+  delete m.ourPet;
+  delete m.enemyPet;
   const so = Array.isArray(m.skillOrder) ? m.skillOrder.slice(0, 3) : [];
   while (so.length < 3) so.push(null);
   m.skillOrder = so.map(x => {

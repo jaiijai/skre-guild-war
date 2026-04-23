@@ -32,16 +32,98 @@ function renderHeader() {
 }
 
 function renderTeams() {
+  const ourF = state.ourFormation || DEFAULT_FORMATION;
+  const enemyF = state.enemyFormation || DEFAULT_FORMATION;
+  const ourSlots = $("#team-our");
+  const enemySlots = $("#team-enemy");
+  if (ourSlots) ourSlots.dataset.formation = ourF;
+  if (enemySlots) enemySlots.dataset.formation = enemyF;
+  renderFormationPicker("our");
+  renderFormationPicker("enemy");
   renderOurTeam();
   renderEnemyTeam();
+  renderTeamPetsBar("our");
+  renderTeamPetsBar("enemy");
+  renderOurLoadout();
+  renderEnemyLoadout();
   renderSkillOrder();
-  renderTeamPets();
   $("#our-total-spd").textContent = ourTotalSpd();
 }
 
-function renderTeamPets() {
-  const o = $("#team-pet-our"); if (o) { o.replaceChildren(renderTeamPet("our")); }
-  const e = $("#team-pet-enemy"); if (e) { e.replaceChildren(renderTeamPet("enemy")); }
+function renderFormationPicker(side) {
+  const root = $(side === "our" ? "#formation-picker-our" : "#formation-picker-enemy");
+  if (!root) return;
+  root.replaceChildren();
+  const current = (side === "our" ? state.ourFormation : state.enemyFormation) || DEFAULT_FORMATION;
+  for (const [key, f] of Object.entries(FORMATIONS)) {
+    const card = el("button", {
+      class: "fp-card" + (current === key ? " on" : ""),
+      disabled: !isEditor,
+      onclick: () => changeFormation(side, key),
+      title: f.label
+    },
+      el("div", {
+        class: "fp-preview fp-" + side,
+        "data-formation": key,
+        "data-side": side
+      }, ...fpPreviewDots(key)),
+      el("div", { class: "fp-label" }, f.label)
+    );
+    root.append(card);
+  }
+}
+
+function fpPreviewDots(key) {
+  const size = formationSize(key);
+  const dots = [];
+  for (let i = 0; i < size; i++) {
+    dots.push(el("span", { class: "fp-dot", "data-i": i + 1 }));
+  }
+  return dots;
+}
+
+function changeFormation(side, key) {
+  if (!isEditor) return;
+  if (!FORMATIONS[key]) return;
+  const size = formationSize(key);
+  if (side === "our") {
+    state.ourFormation = key;
+    state.ourTeam = resizeTeam(state.ourTeam, size);
+  } else {
+    state.enemyFormation = key;
+    state.enemyTeam = resizeTeam(state.enemyTeam, size);
+  }
+  saveCurrent();
+  renderTeams();
+}
+function resizeTeam(arr, size) {
+  const out = (arr || []).slice(0, size);
+  while (out.length < size) out.push(null);
+  return out;
+}
+
+function renderPetsStrip(side) {
+  const pets = (side === "our" ? state.ourPets : state.enemyPets) || [];
+  const wrap = el("button", {
+    class: "pets-strip" + (pets.length ? " filled" : " empty"),
+    title: pets.length ? pets.join(" / ") : "Click to pick pet(s)",
+    onclick: () => openPetModal(side)
+  });
+  if (!pets.length) {
+    wrap.append(el("span", { class: "pets-strip-label" }, "+ Pet"));
+  } else {
+    const icons = el("div", { class: "pets-strip-icons" });
+    for (const p of pets) {
+      icons.append(el("img", {
+        class: "pets-strip-img",
+        src: petImgSrc(p), alt: p, title: p,
+        onerror: (e) => { e.target.style.display = "none"; }
+      }));
+    }
+    wrap.append(icons);
+    wrap.append(el("span", { class: "pets-strip-name" }, pets.join(" / ")));
+  }
+  return wrap;
 }
 
 function renderSkillOrder() {
@@ -146,25 +228,52 @@ function portraitImg(name) {
 
 function renderOurTeam() {
   const root = $("#team-our");
-  root.innerHTML = "";
+  root.replaceChildren();
   state.ourTeam.forEach((s, idx) => {
     if (!s) {
       root.append(emptySlot("our", idx));
       return;
     }
-    const card = el("div", { class: "slot filled" },
+    const card = el("div", {
+      class: "slot filled",
+      onclick: () => openPicker("our", idx),
+      title: s.name
+    },
       el("button", {
         class: "slot-x", title: "Remove",
-        onclick: () => setSlotName("our", idx, null)
+        onclick: (e) => { e.stopPropagation(); setSlotName("our", idx, null); }
       }, "×"),
-      el("div", {
-        class: "slot-portrait",
-        onclick: () => openPicker("our", idx),
-        title: "Click to change"
-      }, portraitImg(s.name)),
-      el("div", { class: "slot-name" }, s.name),
-      renderSetPicker(s, "our", idx),
-      el("div", { class: "stats-grid" },
+      el("div", { class: "slot-portrait" }, portraitImg(s.name)),
+      el("div", { class: "slot-name" }, s.name)
+    );
+    root.append(card);
+  });
+}
+
+function renderOurLoadout() {
+  const root = $("#our-loadout");
+  if (!root) return;
+  root.replaceChildren();
+  const filled = state.ourTeam.map((s, i) => ({ s, i })).filter(x => x.s);
+  if (!filled.length) {
+    root.append(el("div", { class: "loadout-empty" }, "Add characters to Our Team to configure stats & sets."));
+    return;
+  }
+  for (const { s, i } of filled) {
+    const row = el("div", { class: "loadout-row" },
+      el("div", { class: "loadout-char" },
+        el("img", {
+          class: "loadout-portrait",
+          src: portraitSrc(s.name), alt: s.name,
+          onerror: (e) => { e.target.style.display = "none"; }
+        }),
+        el("div", { class: "loadout-meta" },
+          el("div", { class: "loadout-name" }, s.name),
+          el("div", { class: "loadout-slot-idx" }, "Slot " + (i + 1))
+        )
+      ),
+      el("div", { class: "loadout-sets" }, renderSetPicker(s, "our", i)),
+      el("div", { class: "loadout-stats" },
         statInput("ATK", s, "atk"),
         statInput("DEF", s, "def"),
         statInput("HP",  s, "hp"),
@@ -177,31 +286,55 @@ function renderOurTeam() {
         statInput("RES %", s, "res")
       )
     );
-    root.append(card);
-  });
+    root.append(row);
+  }
 }
 
-function renderTeamPet(side) {
-  const pet = side === "our" ? state.ourPet : state.enemyPet;
-  const wrap = el("button", {
-    class: "team-pet" + (pet ? " filled" : " empty"),
-    title: pet || "Click to pick team pet",
-    onclick: () => openPetModal(side)
-  });
-  if (!pet) {
-    wrap.append(el("span", { class: "team-pet-empty" }, "+ Pet"));
-  } else {
-    wrap.append(
-      el("img", {
-        class: "team-pet-img",
-        src: petImgSrc(pet), alt: pet,
-        onerror: (e) => { e.target.style.display = "none"; }
-      }),
-      el("span", { class: "team-pet-name" }, pet)
-    );
+function renderEnemyLoadout() {
+  const root = $("#enemy-loadout");
+  if (!root) return;
+  root.replaceChildren();
+  const filled = state.enemyTeam.map((s, i) => ({ s, i })).filter(x => x.s);
+  if (!filled.length) {
+    root.append(el("div", { class: "loadout-empty" }, "Add characters to Enemy Team to configure sets."));
+    return;
   }
-  return wrap;
+  for (const { s, i } of filled) {
+    const row = el("div", { class: "loadout-row enemy-row" },
+      el("div", { class: "loadout-char" },
+        el("img", {
+          class: "loadout-portrait",
+          src: portraitSrc(s.name), alt: s.name,
+          onerror: (e) => { e.target.style.display = "none"; }
+        }),
+        el("div", { class: "loadout-meta" },
+          el("div", { class: "loadout-name" }, s.name),
+          el("div", { class: "loadout-slot-idx" }, "Slot " + (i + 1))
+        )
+      ),
+      el("div", { class: "loadout-sets full" }, renderSetPicker(s, "enemy", i))
+    );
+    root.append(row);
+  }
 }
+
+function renderPetsRow(side) {
+  return el("div", { class: "loadout-pets-row" },
+    el("div", { class: "loadout-pets-label" }, "Pets"),
+    renderPetsStrip(side)
+  );
+}
+
+function renderTeamPetsBar(side) {
+  const root = $(side === "our" ? "#team-pets-our" : "#team-pets-enemy");
+  if (!root) return;
+  root.replaceChildren();
+  root.append(
+    el("span", { class: "team-pets-bar-label" }, "Pets"),
+    renderPetsStrip(side)
+  );
+}
+
 
 let _petModalCtx = null;
 function openPetModal(side) {
@@ -218,25 +351,17 @@ function renderPetModalGrid() {
   if (!_petModalCtx) return;
   const { side } = _petModalCtx;
   $("#pet-modal-title").textContent =
-    `${side === "our" ? "Our" : "Enemy"} team — Pick pet`;
+    `${side === "our" ? "Our" : "Enemy"} team — Pick pet(s)`;
   const grid = $("#pet-grid");
   grid.replaceChildren();
   const pets = DATA.pets || [];
-  const cur = side === "our" ? state.ourPet : state.enemyPet;
-
-  grid.append(el("button", {
-    class: "pet-card" + (!cur ? " selected" : ""),
-    onclick: () => pickPet(null)
-  },
-    el("div", { class: "pet-card-img pet-none" }, "∅"),
-    el("div", { class: "pet-card-body" }, el("div", { class: "pet-card-name" }, "No pet"))
-  ));
+  const cur = new Set((side === "our" ? state.ourPets : state.enemyPets) || []);
 
   for (const p of pets) {
-    const active = cur === p.name;
+    const active = cur.has(p.name);
     grid.append(el("button", {
       class: "pet-card" + (active ? " selected" : ""),
-      onclick: () => pickPet(p.name)
+      onclick: () => togglePet(p.name)
     },
       el("img", {
         class: "pet-card-img",
@@ -250,13 +375,16 @@ function renderPetModalGrid() {
     ));
   }
 }
-function pickPet(name) {
-  if (!_petModalCtx) return;
+function togglePet(name) {
+  if (!_petModalCtx || !isEditor) return;
   const { side } = _petModalCtx;
-  if (side === "our") state.ourPet = name;
-  else state.enemyPet = name;
+  const key = side === "our" ? "ourPets" : "enemyPets";
+  state[key] = state[key] || [];
+  const i = state[key].indexOf(name);
+  if (i >= 0) state[key].splice(i, 1);
+  else state[key].push(name);
   saveCurrent();
-  closePetModal();
+  renderPetModalGrid();
   renderTeams();
 }
 
@@ -378,24 +506,23 @@ function statInput(label, slot, key) {
 
 function renderEnemyTeam() {
   const root = $("#team-enemy");
-  root.innerHTML = "";
+  root.replaceChildren();
   state.enemyTeam.forEach((s, idx) => {
     if (!s) {
       root.append(emptySlot("enemy", idx));
       return;
     }
-    const card = el("div", { class: "slot filled enemy-slot" },
+    const card = el("div", {
+      class: "slot filled enemy-slot",
+      onclick: () => openPicker("enemy", idx),
+      title: s.name
+    },
       el("button", {
         class: "slot-x", title: "Remove",
-        onclick: () => setSlotName("enemy", idx, null)
+        onclick: (e) => { e.stopPropagation(); setSlotName("enemy", idx, null); }
       }, "×"),
-      el("div", {
-        class: "slot-portrait",
-        onclick: () => openPicker("enemy", idx),
-        title: "Click to change"
-      }, portraitImg(s.name)),
-      el("div", { class: "slot-name" }, s.name),
-      renderSetPicker(s, "enemy", idx)
+      el("div", { class: "slot-portrait" }, portraitImg(s.name)),
+      el("div", { class: "slot-name" }, s.name)
     );
     root.append(card);
   });
