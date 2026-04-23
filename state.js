@@ -49,14 +49,14 @@ function newOurSlot(name) {
   const c = charByName(name);
   if (!c) return null;
   return {
-    name, sets: [], pet: null,
+    name, sets: [],
     atk: c.atk, def: c.def, hp: c.hp, spd: c.spd,
     crit: 0, block: 0, dmgRed: 0, weak: 0, ehr: 0, res: 0
   };
 }
 function newEnemySlot(name) {
   if (!charByName(name)) return null;
-  return { name, sets: [], pet: null };
+  return { name, sets: [] };
 }
 
 function petByName(name) {
@@ -89,6 +89,8 @@ function newMatchup() {
     ourTeam: Array(TEAM_SIZE).fill(null),
     enemyTeam: Array(TEAM_SIZE).fill(null),
     enemyTotalSpd: 0,
+    ourPet: null,
+    enemyPet: null,
     skillOrder: [null, null, null],
     note: "",
     result: "untested",
@@ -114,22 +116,14 @@ function migrateSlot(s, side) {
       atk: c.atk, def: c.def, hp: c.hp, spd: c.spd,
       crit: 0, block: 0, dmgRed: 0, weak: 0, ehr: 0, res: 0
     };
-    const out = {
-      name: s.name,
-      sets: normalizeSets(s),
-      pet: typeof s.pet === "string" && s.pet ? s.pet : null
-    };
+    const out = { name: s.name, sets: normalizeSets(s) };
     for (const k of STAT_KEYS) {
       const v = +s[k];
       out[k] = Number.isFinite(v) ? v : base[k];
     }
     return out;
   }
-  return {
-    name: s.name,
-    sets: normalizeSets(s),
-    pet: typeof s.pet === "string" && s.pet ? s.pet : null
-  };
+  return { name: s.name, sets: normalizeSets(s) };
 }
 
 function sanitizeMatchup(m) {
@@ -141,6 +135,17 @@ function sanitizeMatchup(m) {
   m.ourTeam = our.map(s => migrateSlot(s, "our"));
   m.enemyTeam = enemy.map(s => migrateSlot(s, "enemy"));
   m.enemyTotalSpd = Number.isFinite(+m.enemyTotalSpd) ? +m.enemyTotalSpd : 0;
+  // Migrate per-slot pet (old schema) → team pet if team pet empty
+  if (!m.ourPet) {
+    const first = (m.ourTeam || []).find(s => s && typeof s.pet === "string" && s.pet);
+    m.ourPet = first?.pet || null;
+  }
+  if (!m.enemyPet) {
+    const first = (m.enemyTeam || []).find(s => s && typeof s.pet === "string" && s.pet);
+    m.enemyPet = first?.pet || null;
+  }
+  m.ourPet = typeof m.ourPet === "string" && m.ourPet ? m.ourPet : null;
+  m.enemyPet = typeof m.enemyPet === "string" && m.enemyPet ? m.enemyPet : null;
   const so = Array.isArray(m.skillOrder) ? m.skillOrder.slice(0, 3) : [];
   while (so.length < 3) so.push(null);
   m.skillOrder = so.map(x => {

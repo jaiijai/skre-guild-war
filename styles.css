@@ -357,7 +357,42 @@ main {
   font-weight: 500;
 }
 
-/* Pet display under set */
+.team-head-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.team-pet {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px 4px 4px;
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.15s;
+  max-width: 160px;
+}
+.team-pet:hover { border-color: var(--accent); background: var(--accent-soft); }
+.team-pet.empty {
+  color: var(--muted);
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.team-pet-img {
+  width: 28px; height: 28px;
+  object-fit: contain;
+  background: #0a0d16;
+  border-radius: 6px;
+  padding: 2px;
+  flex-shrink: 0;
+}
+.team-pet-name {
+  font-size: 12px; font-weight: 500;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+body.is-viewer .team-pet { pointer-events: none; opacity: 0.8; }
+
+/* (legacy) pet display per-slot kept for safety — hidden */
 .pet-display {
   margin: 0 8px 8px;
   background: var(--bg-3);

@@ -41,17 +41,23 @@
       <div class="team our">
         <div class="team-head">
           <h2>🟢 Our Team</h2>
-          <span class="team-spd">Total SPD: <strong id="our-total-spd">0</strong></span>
+          <div class="team-head-right">
+            <div id="team-pet-our"></div>
+            <span class="team-spd">Total SPD: <strong id="our-total-spd">0</strong></span>
+          </div>
         </div>
         <div class="slots" id="team-our"></div>
       </div>
       <div class="team enemy">
         <div class="team-head">
           <h2>🔴 Enemy Team</h2>
-          <label class="team-spd">
-            Total SPD:
-            <input id="enemy-total-spd" type="number" step="1" value="0">
-          </label>
+          <div class="team-head-right">
+            <div id="team-pet-enemy"></div>
+            <label class="team-spd">
+              Total SPD:
+              <input id="enemy-total-spd" type="number" step="1" value="0">
+            </label>
+          </div>
         </div>
         <div class="slots" id="team-enemy"></div>
       </div>

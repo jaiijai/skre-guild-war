@@ -18,6 +18,10 @@ create index if not exists matchups_updated_at_idx on public.matchups(updated_at
 alter table public.matchups
   add column if not exists skill_order jsonb not null default '[null,null,null]'::jsonb;
 
+alter table public.matchups
+  add column if not exists our_pet text,
+  add column if not exists enemy_pet text;
+
 create table if not exists public.editors (
   email text primary key,
   note text,
