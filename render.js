@@ -55,11 +55,49 @@ function renderFormationPicker(side) {
   if (!root) return;
   root.replaceChildren();
   const current = (side === "our" ? state.ourFormation : state.enemyFormation) || DEFAULT_FORMATION;
+  const f = FORMATIONS[current];
+  const trigger = el("button", {
+    class: "fp-trigger",
+    disabled: !isEditor,
+    onclick: () => openFormationModal(side),
+    title: f.label
+  },
+    el("div", {
+      class: "fp-preview fp-" + side,
+      "data-formation": current,
+      "data-side": side
+    }, ...fpPreviewDots(current)),
+    el("div", { class: "fp-trigger-body" },
+      el("div", { class: "fp-trigger-label" }, f.label),
+      el("div", { class: "fp-trigger-hint" }, isEditor ? "Tap to change" : "")
+    )
+  );
+  root.append(trigger);
+}
+
+let _formationModalCtx = null;
+function openFormationModal(side) {
+  if (!isEditor) return;
+  _formationModalCtx = { side };
+  $("#formation-modal").classList.add("open");
+  renderFormationModalGrid();
+}
+function closeFormationModal() {
+  _formationModalCtx = null;
+  $("#formation-modal").classList.remove("open");
+}
+function renderFormationModalGrid() {
+  if (!_formationModalCtx) return;
+  const { side } = _formationModalCtx;
+  $("#formation-modal-title").textContent =
+    `${side === "our" ? "Our" : "Enemy"} team — เลือกแผน`;
+  const grid = $("#formation-grid");
+  grid.replaceChildren();
+  const current = (side === "our" ? state.ourFormation : state.enemyFormation) || DEFAULT_FORMATION;
   for (const [key, f] of Object.entries(FORMATIONS)) {
-    const card = el("button", {
+    grid.append(el("button", {
       class: "fp-card" + (current === key ? " on" : ""),
-      disabled: !isEditor,
-      onclick: () => changeFormation(side, key),
+      onclick: () => { changeFormation(side, key); closeFormationModal(); },
       title: f.label
     },
       el("div", {
@@ -68,8 +106,7 @@ function renderFormationPicker(side) {
         "data-side": side
       }, ...fpPreviewDots(key)),
       el("div", { class: "fp-label" }, f.label)
-    );
-    root.append(card);
+    ));
   }
 }
 
@@ -329,10 +366,37 @@ function renderTeamPetsBar(side) {
   const root = $(side === "our" ? "#team-pets-our" : "#team-pets-enemy");
   if (!root) return;
   root.replaceChildren();
-  root.append(
-    el("span", { class: "team-pets-bar-label" }, "Pets"),
-    renderPetsStrip(side)
-  );
+  const pets = (side === "our" ? state.ourPets : state.enemyPets) || [];
+  root.append(el("span", { class: "team-pets-bar-label" }, "Pets"));
+  for (const p of pets) {
+    root.append(el("div", {
+      class: "slot filled pet-slot",
+      onclick: () => openPetModal(side),
+      title: p
+    },
+      el("button", {
+        class: "slot-x", title: "Remove",
+        onclick: (e) => { e.stopPropagation(); removePet(side, p); }
+      }, "×"),
+      el("div", { class: "slot-portrait" }, el("img", {
+        src: petImgSrc(p), alt: p,
+        onerror: (e) => { e.target.style.display = "none"; }
+      })),
+      el("div", { class: "slot-name" }, p)
+    ));
+  }
+  root.append(el("div", {
+    class: "slot empty pet-slot",
+    onclick: () => openPetModal(side)
+  }, el("div", { class: "plus" }, "+")));
+}
+
+function removePet(side, name) {
+  if (!isEditor) return;
+  const key = side === "our" ? "ourPets" : "enemyPets";
+  state[key] = (state[key] || []).filter(x => x !== name);
+  saveCurrent();
+  renderTeams();
 }
 
 

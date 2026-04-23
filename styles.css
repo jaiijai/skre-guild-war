@@ -408,11 +408,50 @@ main {
   backdrop-filter: blur(8px);
 }
 .formation-picker {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
   margin-top: 8px;
 }
+.fp-trigger {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%;
+  background: linear-gradient(180deg, var(--bg-2), rgba(12,16,32,0.9));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.15s;
+  text-align: left;
+}
+.fp-trigger:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: var(--gold-soft);
+  transform: translateY(-1px);
+}
+.fp-trigger:disabled { cursor: not-allowed; opacity: 0.7; }
+.fp-trigger .fp-preview {
+  width: 54px; height: 66px;
+  flex-shrink: 0;
+}
+.fp-trigger-body { display: flex; flex-direction: column; gap: 2px; }
+.fp-trigger-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold-2);
+  letter-spacing: 0.3px;
+}
+.fp-trigger-hint {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.formation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  padding: 16px;
+}
+.formation-modal-panel { max-width: 720px; }
 .fp-card {
   display: flex; flex-direction: column; align-items: center; gap: 8px;
   background: linear-gradient(180deg, var(--bg-2), rgba(12,16,32,0.9));
@@ -506,8 +545,9 @@ main {
 /* ============ Team pets bar (inside team box) ============ */
 .team-pets-bar {
   display: flex; align-items: center; gap: 10px;
-  margin: 0 0 10px;
-  padding: 8px 12px;
+  flex-wrap: wrap;
+  margin: 0 0 12px;
+  padding: 10px 12px;
   background: linear-gradient(180deg, rgba(20,26,58,0.5), rgba(12,16,32,0.6));
   border: 1px solid rgba(245,197,106,0.18);
   border-radius: var(--radius-sm);
@@ -519,6 +559,19 @@ main {
   letter-spacing: 1px;
   text-transform: uppercase;
   flex-shrink: 0;
+}
+.pet-slot {
+  width: 96px;
+  max-width: 96px;
+  flex-shrink: 0;
+  justify-self: auto;
+}
+.pet-slot .slot-portrait {
+  background: linear-gradient(180deg, #0a0d16, #060810);
+}
+.pet-slot .slot-portrait img {
+  object-fit: contain;
+  padding: 6px;
 }
 
 /* ============ Pets strip (in loadout) ============ */

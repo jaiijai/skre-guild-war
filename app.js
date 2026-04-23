@@ -54,6 +54,8 @@ async function boot() {
   $("#set-modal-backdrop").addEventListener("click", closeSetModal);
   $("#pet-modal-close").addEventListener("click", closePetModal);
   $("#pet-modal-backdrop").addEventListener("click", closePetModal);
+  $("#formation-modal-close").addEventListener("click", closeFormationModal);
+  $("#formation-modal-backdrop").addEventListener("click", closeFormationModal);
   $("#picker-q").addEventListener("input", (e) => {
     filterState.q = e.target.value;
     renderPickerGrid();
@@ -63,6 +65,7 @@ async function boot() {
       if ($("#picker").classList.contains("open")) closePicker();
       if ($("#set-modal").classList.contains("open")) closeSetModal();
       if ($("#pet-modal").classList.contains("open")) closePetModal();
+      if ($("#formation-modal").classList.contains("open")) closeFormationModal();
     }
   });
 
