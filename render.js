@@ -46,7 +46,6 @@ function renderTeams() {
   renderTeamPetsBar("our");
   renderTeamPetsBar("enemy");
   renderOurLoadout();
-  renderEnemyLoadout();
   renderSkillOrder();
   $("#our-total-spd").textContent = ourTotalSpd();
 }
