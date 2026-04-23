@@ -1682,5 +1682,105 @@
     "text": "Boss Damage 40%"
    }
   ]
- }
+ },
+ "pets": [
+  {
+   "name": "Ruu",
+   "grade": 6,
+   "element": "ATTACK",
+   "image": "img/pets/Ruu.png",
+   "stats": {}
+  },
+  {
+   "name": "Eirin",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Eirin.png",
+   "stats": {}
+  },
+  {
+   "name": "Richel",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Richel.png",
+   "stats": {}
+  },
+  {
+   "name": "Kree",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Kree.png",
+   "stats": {}
+  },
+  {
+   "name": "Pike",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Pike.png",
+   "stats": {}
+  },
+  {
+   "name": "Dello",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Dello.png",
+   "stats": {}
+  },
+  {
+   "name": "Windy",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Windy.png",
+   "stats": {}
+  },
+  {
+   "name": "Jeb",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Jeb.png",
+   "stats": {}
+  },
+  {
+   "name": "Yu",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Yu.png",
+   "stats": {}
+  },
+  {
+   "name": "Yorang",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Yorang.png",
+   "stats": {}
+  },
+  {
+   "name": "Yeonji",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Yeonji.png",
+   "stats": {}
+  },
+  {
+   "name": "Karam",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Karam.png",
+   "stats": {}
+  },
+  {
+   "name": "Jeo",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Jeo.png",
+   "stats": {}
+  },
+  {
+   "name": "Merparrow",
+   "grade": 6,
+   "element": null,
+   "image": "img/pets/Merparrow.png",
+   "stats": {}
+  }
+ ]
 }

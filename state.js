@@ -49,14 +49,25 @@ function newOurSlot(name) {
   const c = charByName(name);
   if (!c) return null;
   return {
-    name, sets: [],
+    name, sets: [], pet: null,
     atk: c.atk, def: c.def, hp: c.hp, spd: c.spd,
     crit: 0, block: 0, dmgRed: 0, weak: 0, ehr: 0, res: 0
   };
 }
 function newEnemySlot(name) {
   if (!charByName(name)) return null;
-  return { name, sets: [] };
+  return { name, sets: [], pet: null };
+}
+
+function petByName(name) {
+  if (!name || !DATA.pets) return null;
+  return DATA.pets.find(p => p.name === name) || null;
+}
+function petImgSrc(name) {
+  const p = petByName(name);
+  if (p?.image) return p.image;
+  const safe = String(name || "").replace(/[^\w]+/g, "_").replace(/^_|_$/g, "");
+  return `img/pets/${safe}.png`;
 }
 
 function skillIconSrc(charName, skill) {
@@ -103,14 +114,22 @@ function migrateSlot(s, side) {
       atk: c.atk, def: c.def, hp: c.hp, spd: c.spd,
       crit: 0, block: 0, dmgRed: 0, weak: 0, ehr: 0, res: 0
     };
-    const out = { name: s.name, sets: normalizeSets(s) };
+    const out = {
+      name: s.name,
+      sets: normalizeSets(s),
+      pet: typeof s.pet === "string" && s.pet ? s.pet : null
+    };
     for (const k of STAT_KEYS) {
       const v = +s[k];
       out[k] = Number.isFinite(v) ? v : base[k];
     }
     return out;
   }
-  return { name: s.name, sets: normalizeSets(s) };
+  return {
+    name: s.name,
+    sets: normalizeSets(s),
+    pet: typeof s.pet === "string" && s.pet ? s.pet : null
+  };
 }
 
 function sanitizeMatchup(m) {

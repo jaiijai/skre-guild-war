@@ -158,6 +158,7 @@ function renderOurTeam() {
       }, portraitImg(s.name)),
       el("div", { class: "slot-name" }, s.name),
       renderSetPicker(s, "our", idx),
+      renderPetPicker(s, "our", idx),
       el("div", { class: "stats-grid" },
         statInput("ATK", s, "atk"),
         statInput("DEF", s, "def"),
@@ -173,6 +174,90 @@ function renderOurTeam() {
     );
     root.append(card);
   });
+}
+
+function renderPetPicker(slot, side, idx) {
+  const pet = slot.pet;
+  const wrap = el("button", {
+    class: "pet-display" + (pet ? " filled" : " empty"),
+    title: pet || "Click to pick pet",
+    onclick: (e) => { e.stopPropagation(); openPetModal(side, idx); }
+  });
+  if (!pet) {
+    wrap.append(el("div", { class: "pet-display-empty" }, "+ Pet"));
+  } else {
+    wrap.append(
+      el("img", {
+        class: "pet-display-img",
+        src: petImgSrc(pet), alt: pet,
+        onerror: (e) => { e.target.style.display = "none"; }
+      }),
+      el("div", { class: "pet-display-name" }, pet)
+    );
+  }
+  return wrap;
+}
+
+let _petModalCtx = null;
+function openPetModal(side, idx) {
+  if (!isEditor) return;
+  _petModalCtx = { side, idx };
+  $("#pet-modal").classList.add("open");
+  renderPetModalGrid();
+}
+function closePetModal() {
+  _petModalCtx = null;
+  $("#pet-modal").classList.remove("open");
+}
+function renderPetModalGrid() {
+  if (!_petModalCtx) return;
+  const { side, idx } = _petModalCtx;
+  const team = side === "our" ? state.ourTeam : state.enemyTeam;
+  const slot = team[idx];
+  if (!slot) { closePetModal(); return; }
+  $("#pet-modal-title").textContent =
+    `${side === "our" ? "Our" : "Enemy"} — ${slot.name} — Pick pet`;
+  const grid = $("#pet-grid");
+  grid.replaceChildren();
+  const pets = DATA.pets || [];
+  const cur = slot.pet;
+
+  grid.append(el("button", {
+    class: "pet-card" + (!cur ? " selected" : ""),
+    onclick: () => pickPet(null)
+  },
+    el("div", { class: "pet-card-img pet-none" }, "∅"),
+    el("div", { class: "pet-card-body" }, el("div", { class: "pet-card-name" }, "No pet"))
+  ));
+
+  for (const p of pets) {
+    const active = cur === p.name;
+    grid.append(el("button", {
+      class: "pet-card" + (active ? " selected" : ""),
+      onclick: () => pickPet(p.name)
+    },
+      el("img", {
+        class: "pet-card-img",
+        src: p.image || petImgSrc(p.name), alt: p.name,
+        onerror: (e) => { e.target.style.display = "none"; }
+      }),
+      el("div", { class: "pet-card-body" },
+        el("div", { class: "pet-card-name" }, p.name),
+        p.grade ? el("div", { class: "pet-card-stars" }, "★".repeat(p.grade)) : null
+      )
+    ));
+  }
+}
+function pickPet(name) {
+  if (!_petModalCtx) return;
+  const { side, idx } = _petModalCtx;
+  const team = side === "our" ? state.ourTeam : state.enemyTeam;
+  const slot = team[idx];
+  if (!slot) return;
+  slot.pet = name;
+  saveCurrent();
+  closePetModal();
+  renderTeams();
 }
 
 function renderSetPicker(slot, side, idx) {
@@ -310,7 +395,8 @@ function renderEnemyTeam() {
         title: "Click to change"
       }, portraitImg(s.name)),
       el("div", { class: "slot-name" }, s.name),
-      renderSetPicker(s, "enemy", idx)
+      renderSetPicker(s, "enemy", idx),
+      renderPetPicker(s, "enemy", idx)
     );
     root.append(card);
   });
