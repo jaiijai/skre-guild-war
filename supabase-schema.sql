@@ -25,6 +25,10 @@ alter table public.matchups
 alter table public.matchups drop column if exists our_pet;
 alter table public.matchups drop column if exists enemy_pet;
 
+alter table public.matchups
+  add column if not exists our_formation text not null default 'plan1',
+  add column if not exists enemy_formation text not null default 'plan1';
+
 create table if not exists public.editors (
   email text primary key,
   note text,

@@ -20,6 +20,8 @@ function rowToMatchup(row) {
   return sanitizeMatchup({
     id: row.id,
     name: row.name,
+    ourFormation: row.our_formation,
+    enemyFormation: row.enemy_formation,
     ourTeam: row.our_team,
     enemyTeam: row.enemy_team,
     enemyTotalSpd: row.enemy_total_spd,
@@ -38,6 +40,8 @@ function matchupToRow(m) {
   return {
     id: m.id,
     name: m.name,
+    our_formation: m.ourFormation || "plan1",
+    enemy_formation: m.enemyFormation || "plan1",
     our_team: m.ourTeam,
     enemy_team: m.enemyTeam,
     enemy_total_spd: m.enemyTotalSpd || 0,
