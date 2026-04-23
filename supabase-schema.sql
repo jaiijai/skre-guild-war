@@ -19,8 +19,11 @@ alter table public.matchups
   add column if not exists skill_order jsonb not null default '[null,null,null]'::jsonb;
 
 alter table public.matchups
-  add column if not exists our_pet text,
-  add column if not exists enemy_pet text;
+  add column if not exists our_pets jsonb not null default '[]'::jsonb,
+  add column if not exists enemy_pets jsonb not null default '[]'::jsonb;
+
+alter table public.matchups drop column if exists our_pet;
+alter table public.matchups drop column if exists enemy_pet;
 
 create table if not exists public.editors (
   email text primary key,
