@@ -455,17 +455,20 @@ function closePetModal() {
 function renderPetModalGrid() {
   if (!_petModalCtx) return;
   const { side } = _petModalCtx;
+  const curList = (side === "our" ? state.ourPets : state.enemyPets) || [];
   $("#pet-modal-title").textContent =
-    `${side === "our" ? "Our" : "Enemy"} team — Pick pet(s)`;
+    `${side === "our" ? "Our" : "Enemy"} team — Pick pet(s) (${curList.length}/${PET_MAX})`;
   const grid = $("#pet-grid");
   grid.replaceChildren();
   const pets = DATA.pets || [];
   const cur = new Set((side === "our" ? state.ourPets : state.enemyPets) || []);
 
+  const atMax = curList.length >= PET_MAX;
   for (const p of pets) {
     const active = cur.has(p.name);
+    const disabled = atMax && !active;
     grid.append(el("button", {
-      class: "pet-card" + (active ? " selected" : ""),
+      class: "pet-card" + (active ? " selected" : "") + (disabled ? " disabled" : ""),
       onclick: () => togglePet(p.name)
     },
       el("img", {
@@ -480,17 +483,22 @@ function renderPetModalGrid() {
     ));
   }
 }
+const PET_MAX = 3;
 function togglePet(name) {
   if (!_petModalCtx || !isEditor) return;
   const { side } = _petModalCtx;
   const key = side === "our" ? "ourPets" : "enemyPets";
   state[key] = state[key] || [];
   const i = state[key].indexOf(name);
-  if (i >= 0) state[key].splice(i, 1);
-  else state[key].push(name);
+  if (i >= 0) {
+    state[key].splice(i, 1);
+  } else {
+    if (state[key].length >= PET_MAX) return;
+    state[key].push(name);
+  }
   saveCurrent();
   renderPetModalGrid();
-  renderTeams();
+  renderTeamPetsBar(side);
 }
 
 function renderSetPicker(slot, side, idx) {

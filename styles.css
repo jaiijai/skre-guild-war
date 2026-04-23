@@ -1327,6 +1327,7 @@ body.is-viewer .sq-pchar-btns, body.is-viewer .sq-slot.filled { pointer-events: 
   transition: all 0.15s;
 }
 .pet-card:hover { border-color: var(--gold-dim); transform: translateY(-1px); }
+.pet-card.disabled { opacity: 0.3; pointer-events: none; }
 .pet-card.selected {
   border-color: var(--gold);
   background: var(--gold-soft);

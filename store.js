@@ -161,7 +161,8 @@ function subscribeMatchups() {
             if (state.id === m.id) {
               const active = document.activeElement;
               const typing = active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA");
-              if (!typing) {
+              const modalOpen = document.querySelector(".picker.open");
+              if (!typing && !modalOpen) {
                 state = sanitizeMatchup(JSON.parse(JSON.stringify(m)));
                 renderAll();
                 return;
