@@ -23,6 +23,7 @@ function rowToMatchup(row) {
     ourTeam: row.our_team,
     enemyTeam: row.enemy_team,
     enemyTotalSpd: row.enemy_total_spd,
+    skillOrder: row.skill_order,
     note: row.note,
     result: row.result,
     authorId: row.author_id,
@@ -38,6 +39,7 @@ function matchupToRow(m) {
     our_team: m.ourTeam,
     enemy_team: m.enemyTeam,
     enemy_total_spd: m.enemyTotalSpd || 0,
+    skill_order: m.skillOrder || [null, null, null],
     note: m.note,
     result: m.result,
     updated_at: new Date().toISOString()

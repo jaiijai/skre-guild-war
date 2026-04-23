@@ -34,7 +34,60 @@ function renderHeader() {
 function renderTeams() {
   renderOurTeam();
   renderEnemyTeam();
+  renderSkillOrder();
   $("#our-total-spd").textContent = ourTotalSpd();
+}
+
+function renderSkillOrder() {
+  const root = $("#skill-order");
+  if (!root) return;
+  root.innerHTML = "";
+  const teamNames = state.ourTeam.filter(Boolean).map(s => s.name);
+  const order = state.skillOrder || [null, null, null];
+  for (let i = 0; i < 3; i++) {
+    const step = order[i];
+    const stepNum = el("div", { class: "skill-step-num" }, (i + 1));
+
+    const charSel = el("select", {
+      class: "skill-char-sel",
+      onchange: (e) => {
+        if (!isEditor) return;
+        const v = e.target.value;
+        state.skillOrder[i] = v
+          ? { charName: v, skill: state.skillOrder[i]?.skill || "top" }
+          : null;
+        saveCurrent();
+        renderSkillOrder();
+      }
+    },
+      el("option", { value: "" }, "— char —"),
+      ...teamNames.map(n => el("option", { value: n, selected: step?.charName === n }, n))
+    );
+
+    const skillSel = el("select", {
+      class: "skill-kind-sel",
+      disabled: !step,
+      onchange: (e) => {
+        if (!isEditor) return;
+        if (!state.skillOrder[i]) return;
+        state.skillOrder[i].skill = e.target.value;
+        saveCurrent();
+      }
+    },
+      el("option", { value: "top", selected: step?.skill === "top" }, "Top"),
+      el("option", { value: "bottom", selected: step?.skill === "bottom" }, "Bottom")
+    );
+
+    const portrait = step?.charName
+      ? el("img", {
+          class: "skill-portrait",
+          src: portraitSrc(step.charName), alt: step.charName,
+          onerror: (e) => { e.target.style.display = "none"; }
+        })
+      : el("div", { class: "skill-portrait empty" }, "?");
+
+    root.append(el("div", { class: "skill-step" }, stepNum, portrait, charSel, skillSel));
+  }
 }
 
 function portraitImg(name) {

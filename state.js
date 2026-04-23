@@ -72,6 +72,7 @@ function newMatchup() {
     ourTeam: Array(TEAM_SIZE).fill(null),
     enemyTeam: Array(TEAM_SIZE).fill(null),
     enemyTotalSpd: 0,
+    skillOrder: [null, null, null],
     note: "",
     result: "untested",
     createdAt: Date.now(),
@@ -115,6 +116,13 @@ function sanitizeMatchup(m) {
   m.ourTeam = our.map(s => migrateSlot(s, "our"));
   m.enemyTeam = enemy.map(s => migrateSlot(s, "enemy"));
   m.enemyTotalSpd = Number.isFinite(+m.enemyTotalSpd) ? +m.enemyTotalSpd : 0;
+  const so = Array.isArray(m.skillOrder) ? m.skillOrder.slice(0, 3) : [];
+  while (so.length < 3) so.push(null);
+  m.skillOrder = so.map(x => {
+    if (!x || typeof x !== "object") return null;
+    const skill = x.skill === "bottom" ? "bottom" : "top";
+    return typeof x.charName === "string" && x.charName ? { charName: x.charName, skill } : null;
+  });
   if (!m.result) m.result = "untested";
   if (typeof m.note !== "string") m.note = "";
   return m;

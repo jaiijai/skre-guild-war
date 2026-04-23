@@ -258,6 +258,39 @@ main {
   font-size: 11px;
 }
 
+.skill-order-section { margin-top: 14px; }
+.section-label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.skill-order-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.skill-step {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+.skill-step-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent); color: #0a0d14;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px;
+  flex-shrink: 0;
+}
+.skill-portrait {
+  width: 36px; height: 36px;
+  border-radius: 6px;
+  background: #0f1116;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.skill-portrait.empty {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+}
+.skill-char-sel { flex: 1; min-width: 80px; }
+.skill-kind-sel { width: 90px; }
+
 .note-section { margin-top: 14px; }
 .note-section label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
 
