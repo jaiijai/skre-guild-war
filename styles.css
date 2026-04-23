@@ -517,27 +517,34 @@ main {
 }
 .sq-pchar-btns { display: flex; gap: 4px; flex-shrink: 0; }
 .sq-skbtn {
-  padding: 5px 10px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.4px;
-  border-radius: 6px;
+  width: 44px; height: 44px;
+  padding: 3px;
+  border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--bg-3);
-  color: var(--text-dim);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
   transition: all 0.12s;
 }
+.sq-skbtn img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
 .sq-skbtn:hover { transform: translateY(-1px); }
-.sq-skbtn.sk-top:hover {
-  background: rgba(126,226,168,0.18);
-  border-color: var(--our);
-  color: var(--our);
+.sq-skbtn.sk-top:hover { border-color: var(--our); box-shadow: 0 0 0 2px rgba(126,226,168,0.25); }
+.sq-skbtn.sk-bottom:hover { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(255,203,107,0.25); }
+
+.sq-skill-icon {
+  width: 44px; height: 44px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid var(--accent);
+  background: var(--bg-1);
+  padding: 2px;
+  flex-shrink: 0;
 }
-.sq-skbtn.sk-bottom:hover {
-  background: rgba(255,203,107,0.18);
-  border-color: var(--gold);
-  color: var(--gold);
-}
+.sq-skill-icon.sk-top { border-color: var(--our); }
+.sq-skill-icon.sk-bottom { border-color: var(--gold); }
 body.is-viewer .sq-pchar-btns, body.is-viewer .sq-slot.filled { pointer-events: none; opacity: 0.7; }
 
 /* ============ Note ============ */

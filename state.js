@@ -59,6 +59,12 @@ function newEnemySlot(name) {
   return { name, sets: [] };
 }
 
+function skillIconSrc(charName, skill) {
+  if (!charName || !skill) return null;
+  const safe = String(charName).replace(/[^\w]+/g, "_").replace(/^_|_$/g, "");
+  return `img/skills/${safe}_${skill}.png`;
+}
+
 function setIconSrc(setName) {
   if (!setName) return null;
   const safe = String(setName).replace(/\s+/g, "_");

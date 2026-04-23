@@ -71,7 +71,13 @@ function renderSkillOrder() {
               el("div", { class: "sq-name" }, step.charName),
               el("div", { class: "sq-skill sk-" + step.skill },
                 step.skill === "top" ? "Skill 1" : "Skill 2")
-            )
+            ),
+            el("img", {
+              class: "sq-skill-icon sk-" + step.skill,
+              src: skillIconSrc(step.charName, step.skill),
+              alt: step.skill,
+              onerror: (e) => { e.target.style.display = "none"; }
+            })
           )
         : el("div", { class: "sq-placeholder" }, "Tap a skill below →")
     );
@@ -95,8 +101,8 @@ function renderSkillOrder() {
       }),
       el("div", { class: "sq-pchar-name" }, s.name),
       el("div", { class: "sq-pchar-btns" },
-        skillBtn(s.name, "top", "Skill 1"),
-        skillBtn(s.name, "bottom", "Skill 2")
+        skillBtn(s.name, "top"),
+        skillBtn(s.name, "bottom")
       )
     );
     palette.append(card);
@@ -104,18 +110,25 @@ function renderSkillOrder() {
   root.append(palette);
 }
 
-function skillBtn(charName, skill, label) {
+function skillBtn(charName, skill) {
   return el("button", {
     class: "sq-skbtn sk-" + skill,
+    title: (skill === "top" ? "Skill 1" : "Skill 2") + " — " + charName,
     onclick: () => {
       if (!isEditor) return;
       const free = state.skillOrder.findIndex(x => !x);
-      if (free < 0) return; // queue full
+      if (free < 0) return;
       state.skillOrder[free] = { charName, skill };
       saveCurrent();
       renderSkillOrder();
     }
-  }, label);
+  },
+    el("img", {
+      src: skillIconSrc(charName, skill),
+      alt: skill,
+      onerror: (e) => { e.target.style.display = "none"; }
+    })
+  );
 }
 
 function portraitImg(name) {
