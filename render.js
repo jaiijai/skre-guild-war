@@ -284,8 +284,49 @@ function renderOurTeam() {
       el("div", { class: "slot-portrait" }, portraitImg(s.name)),
       el("div", { class: "slot-name" }, s.name)
     );
+    wireSlotDnD(card, "our", idx);
     root.append(card);
   });
+}
+
+let _slotDrag = null;
+function wireSlotDnD(node, side, idx) {
+  if (!isEditor) return;
+  node.setAttribute("draggable", "true");
+  node.addEventListener("dragstart", (e) => {
+    _slotDrag = { side, idx };
+    node.classList.add("dragging");
+    try { e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", String(idx)); } catch {}
+  });
+  node.addEventListener("dragend", () => {
+    node.classList.remove("dragging");
+    document.querySelectorAll(".slot.drag-over").forEach(n => n.classList.remove("drag-over"));
+    _slotDrag = null;
+  });
+  node.addEventListener("dragover", (e) => {
+    if (!_slotDrag || _slotDrag.side !== side) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    node.classList.add("drag-over");
+  });
+  node.addEventListener("dragleave", () => node.classList.remove("drag-over"));
+  node.addEventListener("drop", (e) => {
+    e.preventDefault();
+    node.classList.remove("drag-over");
+    if (!_slotDrag || _slotDrag.side !== side) return;
+    const from = _slotDrag.idx;
+    const to = idx;
+    if (from === to) return;
+    const team = side === "our" ? state.ourTeam : state.enemyTeam;
+    [team[from], team[to]] = [team[to], team[from]];
+    remapSkillOrderAfterSwap(side, from, to);
+    saveCurrent();
+    renderTeams();
+  });
+}
+function remapSkillOrderAfterSwap(side, a, b) {
+  if (side !== "our") return;
+  // skillOrder references charName, not idx — no remap needed. Keep for future.
 }
 
 function renderOurLoadout() {
@@ -589,15 +630,39 @@ function renderEnemyTeam() {
       el("div", { class: "slot-portrait" }, portraitImg(s.name)),
       el("div", { class: "slot-name" }, s.name)
     );
+    wireSlotDnD(card, "enemy", idx);
     root.append(card);
   });
 }
 
 function emptySlot(side, idx) {
-  return el("div", {
+  const node = el("div", {
     class: "slot empty",
     onclick: () => openPicker(side, idx)
   }, el("div", { class: "plus" }, "+"));
+  wireSlotDropOnly(node, side, idx);
+  return node;
+}
+function wireSlotDropOnly(node, side, idx) {
+  if (!isEditor) return;
+  node.addEventListener("dragover", (e) => {
+    if (!_slotDrag || _slotDrag.side !== side) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    node.classList.add("drag-over");
+  });
+  node.addEventListener("dragleave", () => node.classList.remove("drag-over"));
+  node.addEventListener("drop", (e) => {
+    e.preventDefault();
+    node.classList.remove("drag-over");
+    if (!_slotDrag || _slotDrag.side !== side) return;
+    const from = _slotDrag.idx;
+    if (from === idx) return;
+    const team = side === "our" ? state.ourTeam : state.enemyTeam;
+    [team[from], team[idx]] = [team[idx], team[from]];
+    saveCurrent();
+    renderTeams();
+  });
 }
 
 function setSlotName(side, idx, name) {
