@@ -426,10 +426,12 @@ function renderTeamPetsBar(side) {
       el("div", { class: "slot-name" }, p)
     ));
   }
-  root.append(el("div", {
-    class: "slot empty pet-slot",
-    onclick: () => openPetModal(side)
-  }, el("div", { class: "plus" }, "+")));
+  if (pets.length === 0) {
+    root.append(el("div", {
+      class: "slot empty pet-slot",
+      onclick: () => openPetModal(side)
+    }, el("div", { class: "plus" }, "+")));
+  }
 }
 
 function removePet(side, name) {
